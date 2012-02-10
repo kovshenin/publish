@@ -1,0 +1,426 @@
+/*
+Theme Name: Publish
+Theme URI: http://kovshenin.com/wordpress/themes/publish/
+Description: A simple, elegant, and responsive WordPress theme for blogging.
+Version: 1.0
+Author: Konstantin Kovshenin
+Author URI: http://kovshenin.com
+Tags: flexible-width, one-column, white, custom-background, threaded-comments, theme-options, translation-ready
+License: GNU General Public License v2
+License URI: license.txt
+*/
+
+@import url("stylesheets/base.css");
+@import url("stylesheets/skeleton.css");
+@import url("stylesheets/layout.css");
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600");
+
+#header {
+	margin-bottom: 40px;
+}
+
+#site-title,
+#site-title a {
+	color: #181818;
+	font-family: "Open Sans", Helvetica, Arial, sans-serif;
+	font-weight: normal;
+	line-height: 1.3;
+	font-size: 26px;
+	text-decoration: none;
+	margin-bottom: 0;
+}
+
+#site-title, h1, h2, h3, h4, h5, h6 {
+	letter-spacing: -0.05em;
+}
+
+#site-description {
+	color: #666;
+	font-size: 13px;
+	margin-top: 0;
+}
+
+#navigation ul {
+	list-style: none;
+	margin-left: 0;
+}
+
+#navigation li {
+	float: left;
+	margin-right: 10px;
+}
+
+.post-meta {
+	border-right: solid 1px #ddd;
+	padding-right: 20px;
+	min-height: 38px;
+}
+
+.post-meta,
+.post-meta a {
+	color: #666;
+	font-size: 12px;
+	text-align: right;
+	text-decoration: none;
+}
+
+.post-meta-helper,
+.post-meta-helper a {
+	color: #666;
+}
+
+.hentry {
+	margin-bottom: 40px;
+}
+
+.post-title {
+	margin-top: 0;
+	color: #181818;
+	font-family: "Open Sans", Helvetica, Arial, sans-serif;
+	font-weight: normal;
+	line-height: 1.3;
+	font-size: 22px; 
+	margin-bottom: 10px;
+}
+
+h1.post-title {
+	font-size: 26px;
+}
+
+.post .wp-caption {
+	max-width: 100%;
+}
+
+.post-content iframe,
+.post-content object,
+.post-content embed {
+	max-width: 100%;
+}
+
+.post-content img {
+	max-width: 98%;
+	height: auto !important;
+	border: solid 1px #ccc;
+	padding: 5px;
+}
+
+.post-content img,
+.post-content pre {
+	box-shadow: 0px 0px 5px #ccc;
+	-moz-box-shadow: 0px 0px 5px #ccc;
+	-o-box-shadow: 0px 0px 5px #ccc;
+}
+
+.post-content img.wp-smiley {
+	padding: 0;
+	border: 0;
+	max-width: 100%;
+}
+
+.post-tags,
+.post-tags a {
+	color: #666;
+	font-size: 11px;
+}
+.post-tags a::before {
+	content: "#";
+}
+
+.pagination a {
+	margin-right: 10px;
+}
+
+a:hover {
+	color: black;
+}
+
+#footer {
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+#footer,
+#footer a {
+	color: #888;
+	line-height: 1.5;
+	font-size: 10px;
+}
+
+/* Additional WordPress-related stuff */
+
+/* Tables */
+table {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+table th {
+	background: #eee;
+	text-align: left;
+	padding: 3px 6px;
+}
+
+table td {
+	padding: 3px 6px;
+	border-bottom: solid 1px #eee;
+}
+
+/* Definition Lists */
+
+dt {
+	font-weight: bold;
+}
+
+dd {
+	margin-left: 30px;
+	margin-bottom: 10px;
+}
+
+/* Misc */
+address {
+	font-style: italic;
+	margin: 10px 0;
+}
+
+code, pre, kbd, tt {
+	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+	font-size: 12px;
+}
+
+pre {
+	background: #f8f8f8;
+	border: solid 1px #ccc;
+	padding: 16px;
+	margin-bottom: 20px;
+	overflow: auto;
+}
+
+ins {
+	background: #fff9c0;
+	text-decoration: none;
+}
+sup,
+sub {
+	font-size: 10px;
+	height: 0;
+	line-height: 1;
+	position: relative;
+	vertical-align: baseline;
+}
+sup {
+	bottom: 1ex;
+}
+sub {
+	top: .5ex;
+}
+abbr, acronym, dfn {
+	border-bottom: 1px dotted #666;
+	cursor: help;
+}
+
+/* Comments */
+#comments {
+	margin-top: 0;
+	font-size: 14px;
+	margin-bottom: 30px;
+}
+
+#comments-template div.navigation {
+	height: 50px;
+}
+
+ol.commentlist {
+	margin-left: 0;
+}
+
+ol.commentlist,
+ol.commentlist ul.children {
+	list-style: none;
+}
+
+ol.commentlist .avatar {
+	width: 24px;
+	height: 24px;
+	float: left;
+	margin-right: 6px;
+	margin-left: -30px;
+}
+
+.comment-meta,
+.comment-meta a {
+	color: #666;
+	font-size: 10px;
+	text-decoration: none;
+}
+
+.comment-meta {
+	margin-left: 0px;
+	margin-bottom: 10px;
+}
+
+.comment .reply {
+	display: block;
+	opacity: 0.1;
+}
+
+.comment .reply a {
+	width: 16px;
+	height: 16px;
+	font-size: 12px;
+	color: #666;
+	margin-top: -10px;
+	display: block;
+	text-indent: 20px;
+	background: url(images/reply-sprite.png) 0 0 no-repeat;
+}
+
+.comment-body:hover .reply {
+	opacity: 1;
+}
+
+.comment .reply a:hover {
+	background-position: -16px 0;
+	color: black;
+}
+
+.comment-body {
+	margin-left: 30px;
+	margin-bottom: 20px;
+}
+
+.comment-author {
+	line-height: 24px;
+}
+
+.pingback .says,
+.pingback .comment-meta,
+.pingback .reply,
+.pingback p {
+	display: none;
+}
+
+.pingback cite {
+	position: relative;
+}
+
+.pingback cite::before {
+	content: "Ping!";
+	position: absolute;
+	left: -31px;
+	font-size: 10px;
+	color: #999;
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+}
+
+li.comment #respond {
+	margin-left: 30px;
+}
+
+#respond h3 {
+	margin-top: 0;
+	font-size: 14px;
+	margin-bottom: 20px;
+}
+
+#cancel-comment-reply {
+	font-size: 16px;
+	margin-top: -20px;
+	margin-bottom: 20px;
+	display: none;
+}
+
+#respond p {
+	margin-bottom: 10px;
+}
+
+li.comment #cancel-comment-reply {
+	display: block;
+}
+
+#respond input[type="text"] {
+	width: 70%;
+	margin-bottom: 0;
+}
+
+#respond textarea {
+	width: 90%;
+}
+
+#respond label {
+	font-weight: normal;
+	font-size: 14px;
+	color: #666;
+}
+
+.comment-subscription-form {
+	margin-bottom: 0px !important;
+}
+
+.comment-subscription-form label {
+	font-size: 13px !important;
+	display: inline;
+}
+
+/* WordPress-specific */
+.alignleft {
+	float: left;
+}
+
+.alignright {
+	float: right;
+}
+
+.aligncenter {
+	margin: 0 auto;
+	display: block;
+}
+
+img.alignleft {
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+
+img.alignright {
+	margin-left: 20px;
+	margin-bottom: 20px;
+}
+
+img.aligncenter {
+	margin: 20px auto;
+}
+
+.wp-caption.alignleft {
+	margin-right: 20px;
+}
+
+.wp-caption.alignright {
+	margin-left: 20px;
+}
+
+#page-title {
+	margin-bottom: 10px;
+}
+
+.format-quote blockquote {
+	padding-left: 0;
+	padding-top: 0;
+}
+
+/* #Gallery
+=========================================== */
+
+.gallery img {
+	border: solid 1px #ccc !important;
+}
+
+/* Search form on 404 */
+#searchform #s {
+	float: left;
+}
+
+#searchform #searchsubmit {
+	margin-top: -1px;
+}
