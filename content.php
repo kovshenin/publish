@@ -1,5 +1,5 @@
 <?php
-	global $publish;
+	global $publish, $post;
 
 	$title = apply_filters( 'the_title', get_the_title() );
 
@@ -13,7 +13,9 @@
 	else
 		$title = sprintf( '<h2 class="post-title"><a href="%s" rel="bookmark">%s</a></h2>', get_permalink(), $title );
 
-	echo $title;
+	
+	if ( strlen( $post->post_title ) > 0 )
+		echo $title;
 
 	if ( ! is_search() )
 		the_content( 'Continue reading' );
