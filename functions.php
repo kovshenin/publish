@@ -42,7 +42,7 @@ class Publish_Theme {
 
 	public function the_title( $title ) {
 
-		if ( is_feed() && strlen( trim( $title ) ) < 1 ) {
+		if ( strlen( trim( $title ) ) < 1 ) {
 			$words = preg_split( "/[\n\r\t ]+/", get_the_excerpt(), 15, PREG_SPLIT_NO_EMPTY );
 			array_pop( $words );
 			$title = implode( ' ', $words ) . ' ...';
