@@ -289,7 +289,7 @@ abbr, acronym, dfn {
 }
 
 ol.commentlist {
-	margin-left: 0;
+	margin-left: 60px;
 }
 
 ol.commentlist,
@@ -297,12 +297,23 @@ ol.commentlist ul.children {
 	list-style: none;
 }
 
+ul.children {
+	margin-left: 44px;
+}
+
 ol.commentlist .avatar {
-	width: 24px;
-	height: 24px;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
 	float: left;
 	margin-right: 6px;
-	margin-left: -30px;
+	margin-left: -60px;
+}
+
+ul.children .avatar {
+	width: 32px;
+	height: 32px;
+	margin-left: -44px;
 }
 
 .comment-meta,
@@ -313,13 +324,18 @@ ol.commentlist .avatar {
 }
 
 .comment-meta {
+	margin-top: -16px;
 	margin-left: 0px;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
+}
+
+.comment-meta a:before {
+	content: "\2014\a0";
 }
 
 .comment .reply {
 	display: block;
-	opacity: 0.1;
+	opacity: 0.2;
 }
 
 .comment .reply a {
@@ -343,14 +359,26 @@ ol.commentlist .avatar {
 }
 
 .comment-body {
-	margin-left: 30px;
-	margin-bottom: 20px;
+	margin-left: 0px;
+	margin-bottom: 40px;
 }
 
 .comment-author {
-	line-height: 24px;
+	line-height: 48px;
+	font-size: 16px;
+	font-weight: bold;
 }
 
+ul.children .comment-author {
+	line-height: 32px;
+	margin-bottom: 10px;
+}
+
+.comment-author .fn a {
+	text-decoration: none;
+}
+
+.comment-author .says,
 .pingback .says,
 .pingback .comment-meta,
 .pingback .reply,
@@ -375,7 +403,7 @@ ol.commentlist .avatar {
 }
 
 li.comment #respond {
-	margin-left: 30px;
+	margin-left: 60px;
 }
 
 #respond h3 {
