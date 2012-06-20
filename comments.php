@@ -12,14 +12,9 @@
 
 <!-- You can start editing here. -->
 
-<?php if ( have_comments() ) :
-	if ( get_the_title() ): ?>
-		<h3 id="comments"><?php	printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number() ),
+<?php if ( have_comments() ) : ?>
+	<h3 id="comments"><?php	printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number() ),
 									number_format_i18n( get_comments_number() ), '&#8220;' . get_the_title() . '&#8221;' ); ?></h3>
-	<?php else: ?>
-		<h3 id="comments"><?php	printf( _n( 'One Response', '%1$s Responses', get_comments_number() ),
-									number_format_i18n( get_comments_number() ) ); ?></h3>
-	<?php endif; ?>
 
 	<div class="navigation">
 		<div class="alignleft"><?php previous_comments_link() ?></div>
@@ -41,7 +36,7 @@
 
 	 <?php else : // comments are closed ?>
 		<!-- If comments are closed. -->
-
+		
 
 	<?php endif; ?>
 <?php endif; ?>
@@ -96,8 +91,8 @@
 
 <?php else : // if you delete this the sky will fall on your head ?>
 <p>
-	Sorry, but commenting on this post is closed. I tend to close comments on
-	articles older that two weeks in order to avoid spam, however, if you still
+	Sorry, but commenting on this post is closed. I tend to close comments on 
+	articles older that two weeks in order to avoid spam, however, if you still 
 	wish to say something, you can always reach me at any time on Twitter:
 </p>
 <p>

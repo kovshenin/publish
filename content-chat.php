@@ -11,7 +11,7 @@
 	if ( is_singular() )
 		$title = sprintf( '<h1 class="post-title">%s</h1>', $title );
 	else
-		$title = sprintf( '<h2 class="post-title"><a href="%s" rel="bookmark">%s</a></h2>', get_permalink(), $title );
+		$title = '';
 
 	echo $title;
 

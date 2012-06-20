@@ -22,10 +22,10 @@
 	<!-- Favicons
 	================================================== -->
 	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/images/favicon.ico">
-	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<!--<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
-	<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">-->
+	<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2">
 	<?php
 	if ( is_singular() && get_option( 'thread_comments' ) )
 		wp_enqueue_script( 'comment-reply' );
@@ -34,7 +34,7 @@
 	<?php wp_head(); ?>
 
 </head>
-<body>
+<body <?php body_class($class); ?>>
 
 	<!-- Primary Page Layout
 	================================================== -->
@@ -43,23 +43,23 @@
 		<div id="header" class="ten columns offset-by-four">
 			<?php $tag = ( is_home() ) ? 'h1' : 'div'; ?>
 			<<?php echo $tag; ?> id="site-title" style="margin-top: 40px"><a href="<?php echo home_url( '/' ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></<?php echo $tag; ?>>
-
-			<h5 id="site-description"><?php echo $publish->random_description(); ?></h5>
-
+			
+			<h5 id="site-description"><?php bloginfo( 'description' ); ?></h5>
+			
 			<nav id="navigation">
 				<?php wp_nav_menu( array( 'depth' => 1, 'theme_location' => 'primary' ) ); ?>
-
+				
 				<div class="twitter-follow-container" style="float: left; width: 150px;">
-					<a href="https://twitter.com/soulseekah" class="twitter-follow-button" data-show-count="true" data-show-screen-name="false">Follow @soulseekah</a>
+					<a href="https://twitter.com/kovshenin" class="twitter-follow-button" data-show-count="true" data-show-screen-name="false">Follow @kovshenin</a>
 					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 				</div>
-
+				
 			</nav>
-
+			
 		</div>
-
+		
 		<div class="sixteen columns">
-
+			
 			<div id="page-title" class="ten columns offset-by-four alpha">
 				<strong>
 					<?php if ( is_day() ) : ?>

@@ -1,5 +1,5 @@
 /*
-Theme Name: Publish
+Theme Name: Publish 2
 Theme URI: http://kovshenin.com/wordpress/themes/publish/
 Description: A simple, elegant, and responsive WordPress theme for blogging.
 Version: 1.0
@@ -23,9 +23,9 @@ License URI: license.txt
 #site-title a {
 	color: #181818;
 	font-family: "Open Sans", Helvetica, Arial, sans-serif;
-	font-weight: normal;
+	font-weight: 600;
 	line-height: 1.3;
-	font-size: 26px;
+	font-size: 24px;
 	text-decoration: none;
 	margin-bottom: 0;
 }
@@ -51,8 +51,8 @@ License URI: license.txt
 }
 
 .post-meta {
-	border-right: solid 1px #ddd;
-	padding-right: 20px;
+	/*border-right: solid 1px #ddd;*/
+	padding-right: 10px;
 	min-height: 38px;
 }
 
@@ -69,28 +69,86 @@ License URI: license.txt
 	color: #666;
 }
 
+.permalink-icon {
+	position: relative;
+	top: -2px;
+	display: inline-block;
+	width: 23px;
+	height: 24px;
+	background: url(images/post-formats-2.png) -24px 0px no-repeat;
+}
+
+.hentry:hover .permalink-icon { background-position: -24px -25px; }
+.hentry .permalink-icon:hover { background-position: -24px -49px; }
+
+
+.hentry.format-link .permalink-icon { background-position: -1px 0; }
+.hentry.format-link:hover .permalink-icon { background-position: -1px -25px; }
+.hentry.format-link .permalink-icon:hover { background-position: -1px -49px; }
+
+.hentry.format-quote .permalink-icon { background-position: -93px 0; }
+.hentry.format-quote:hover .permalink-icon { background-position: -93px -25px; }
+.hentry.format-quote .permalink-icon:hover { background-position: -93px -49px; }
+.hentry.format-chat .permalink-icon { background-position: -93px 0; }
+.hentry.format-chat:hover .permalink-icon { background-position: -93px -25px; }
+.hentry.format-chat .permalink-icon:hover { background-position: -93px -49px; }
+
+.hentry.format-video .permalink-icon { background-position: -140px 0; }
+.hentry.format-video:hover .permalink-icon { background-position: -140px -25px; }
+.hentry.format-video .permalink-icon:hover { background-position: -140px -49px; }
+
+.hentry.format-status .permalink-icon { background-position: -117px 0; }
+.hentry.format-status:hover .permalink-icon { background-position: -117px -25px; }
+.hentry.format-status .permalink-icon:hover { background-position: -117px -49px; }
+
+.hentry.format-aside .permalink-icon { background-position: -70px 0; }
+.hentry.format-aside:hover .permalink-icon { background-position: -70px -25px; }
+.hentry.format-aside .permalink-icon:hover { background-position: -70px -49px; }
+
+.hentry.format-image .permalink-icon { background-position: -164px 0; }
+.hentry.format-image:hover .permalink-icon { background-position: -164px -25px; }
+.hentry.format-image .permalink-icon:hover { background-position: -164px -49px; }
+
+.post-content img { background: white; }
+.format-aside h1.post-title,
+.format-quote h1.post-title,
+.format-chat h1.post-title,
+.format-status h1.post-title,
+.format-image h1.post-title,
+.format-link h1.post-title { font-size: 13px; line-height: 21px; margin-top: 0; }
+.format-aside h1.post-title::before { content: "Aside: "; color: #666; }
+.format-quote h1.post-title::before { content: "Quote: "; color: #666; }
+.format-status h1.post-title::before { content: "Status: "; color: #666; }
+.format-link h1.post-title::before { content: "Link: "; color: #666; }
+.format-image h1.post-title::before { content: "Image: "; color: #666; }
+
 .hentry {
 	margin-bottom: 40px;
 }
 
 .post-title {
-	margin-top: 0;
+	margin-top: -5px;
 	color: #181818;
 	font-family: "Open Sans", Helvetica, Arial, sans-serif;
-	font-weight: normal;
+	font-weight: 600;
 	line-height: 1.3;
 	font-size: 22px; 
-	margin-bottom: 10px;
+	margin-bottom: 25px;
 }
 
 h1.post-title {
-	font-size: 26px;
+	font-size: 24px;
+}
+
+.post-title a {
+	text-decoration: none;
 }
 
 .post .wp-caption {
 	max-width: 100%;
 }
 
+.post-content { position: relative; }
 .post-content iframe,
 .post-content object,
 .post-content embed {
@@ -121,6 +179,7 @@ h1.post-title {
 .post-tags a {
 	color: #666;
 	font-size: 11px;
+	text-transform: lowercase;
 }
 .post-tags a::before {
 	content: "#";
@@ -405,8 +464,8 @@ img.aligncenter {
 }
 
 .format-quote blockquote {
-	padding-left: 0;
-	padding-top: 0;
+	/*padding-left: 0;
+	padding-top: 0;*/
 }
 
 /* #Gallery
