@@ -1,59 +1,56 @@
 <?php
-	global $publish, $post;
-	
-	$title = apply_filters( 'the_title', get_the_title() );
-		
-	// There's never a line with one word unless it's the first line ;)
-	if ( strlen( $title ) > 1 && strrpos( $title, ' ' ) !== false )
-		$title = substr_replace( $title, '&nbsp;', strrpos( $title, ' ' ), 1 );
-
-	// h1 if singular and h2 + link if not
-	if ( is_singular() )
-		$title = sprintf( '<h1 class="post-title">%s</h1>', $title );
-	else
-		$title = sprintf( '<h2 class="post-title"><a href="%s" rel="bookmark">%s</a></h2>', get_permalink(), $title );
-
-	echo $title;
-
-	if ( ! is_search() )
-		the_content( 'Continue reading' );
-	else
-		the_excerpt();
+/**
+ * @package Publish
+ * @since Publish 1.0
+ */
 ?>
 
-<div class="clear"></div>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'publish' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+	</header><!-- .entry-header -->
 
-<?php if ( ! is_search() ): ?>
-	<?php wp_link_pages(); ?>
+	<?php if ( is_search() ) : // Only display Excerpts for Search ?>
+	<div class="entry-summary">
+		<?php the_excerpt(); ?>
+	</div><!-- .entry-summary -->
+	<?php else : ?>
+	<div class="entry-content">
+		<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'publish' ) ); ?>
+		<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'publish' ), 'after' => '</div>' ) ); ?>
+		<div class="clearfloat"></div>
+	</div><!-- .entry-content -->
+	<?php endif; ?>
 
-
-	<p class="show-when-narrow post-meta-helper">
-		<?php if ( get_post_type() == 'page' ) : ?>
-				
-		<?php else : ?>
-			<?php _e( 'Published', 'publish' ); ?> <a href="<?php the_permalink(); ?>" rel="bookmark"><?php $publish->the_time_diff(); ?></a>
-
-			<?php if ( $publish->options['display-author'] ) : ?>
+	<footer class="entry-meta">
+		<?php if ( 'post' == get_post_type() ) : // Hide category and tag text for pages on Search ?>
+			<?php publish_posted_on(); ?>
 			<?php
-				// Translators: by <author display name>
-				printf( __( 'by %s', 'publish' ),
-					sprintf( '<a href="%s" rel="author">%s</a>',
-						get_author_posts_url( get_the_author_meta( 'ID' ) ),
-						get_the_author()
-					)
-				);
+				/* translators: used between list items, there is a space after the comma */
+				$categories_list = get_the_category_list( __( ', ', 'publish' ) );
+				if ( $categories_list && publish_categorized_blog() ) :
 			?>
-			<?php endif; ?>
-		
-			<?php _e( 'with', 'publish' ); ?> <a href="<?php comments_link(); ?>"><?php comments_number( __( 'no comments', 'publish' ), __( 'one comment', 'publish' ), __( '% comments', 'publish' ) ); ?></a>
-			
-			<?php if ( $publish->options['display-tags'] ) { the_tags( __( 'tagged ', 'publish' ), ', ' ); } ?>
-			<?php if ( $publish->options['display-categories'] ) { _e( ' in ', 'publish' ); the_category( ', ' ); } ?>
-		<?php endif; ?>
-	</p>
+			<span class="cat-links">
+				<?php printf( __( 'in %1$s', 'publish' ), $categories_list ); ?>
+			</span>
+			<?php endif; // End if categories ?>
 
-	<p class="post-tags hide-when-narrow">		
-		<?php if ( $publish->options['display-tags'] ) the_tags( '', ' ' ); ?>
-		<?php if ( $publish->options['display-categories'] ) the_category( ' ' ); ?>
-	</p>
-<?php endif; ?>
+			<?php
+				/* translators: used between list items, there is a space after the comma */
+				$tags_list = get_the_tag_list( '', __( ', ', 'publish' ) );
+				if ( $tags_list ) :
+			?>
+			<span class="sep"> | </span>
+			<span class="tag-links">
+				<?php printf( __( 'Tagged %1$s', 'publish' ), $tags_list ); ?>
+			</span>
+			<?php endif; // End if $tags_list ?>
+		<?php endif; // End if 'post' == get_post_type() ?>
+
+		<?php if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) : ?>
+		<span class="sep"> | </span>
+		<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'publish' ), __( '1 Comment', 'publish' ), __( '% Comments', 'publish' ) ); ?></span>
+		<?php endif; ?>
+
+	</footer><!-- .entry-meta -->
+</article><!-- #post-<?php the_ID(); ?> -->

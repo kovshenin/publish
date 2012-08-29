@@ -1,63 +1,76 @@
 <?php
-// Do not delete these lines
-	if (!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
-		die ('Please do not load this page directly. Thanks!');
-
-	if ( post_password_required() ) { ?>
-		<p class="nocomments"><?php _e('This post is password protected. Enter the password to view comments.'); ?></p>
-	<?php
-		return;
-	}
+/**
+ * The template for displaying Comments.
+ *
+ * The area of the page that contains both current comments
+ * and the comment form. The actual display of comments is
+ * handled by a callback to publish_comment() which is
+ * located in the functions.php file.
+ *
+ * @package Publish
+ * @since Publish 1.0
+ */
 ?>
 
-<!-- You can start editing here. -->
+<?php
+	/*
+	 * If the current post is protected by a password and
+	 * the visitor has not yet entered the password we will
+	 * return early without loading the comments.
+	 */
+	if ( post_password_required() )
+		return;
+?>
 
-<?php if ( have_comments() ) : ?>
-	<!--<h3 id="comments">Comments</h3>-->
+	<div id="comments" class="comments-area">
 
-	<div class="navigation">
-		<div class="alignleft"><?php previous_comments_link() ?></div>
-		<div class="alignright"><?php next_comments_link() ?></div>
-	</div>
+	<?php // You can start editing here -- including this comment! ?>
 
-	<ol class="commentlist">
-	<?php wp_list_comments( array( 'avatar_size' => 48 ) );?>
-	</ol>
+	<?php if ( have_comments() ) : ?>
+		<h2 class="comments-title">
+			<?php
+				printf( _n( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'publish' ),
+					number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
+			?>
+		</h2>
 
-	<div class="navigation">
-		<div class="alignleft"><?php previous_comments_link() ?></div>
-		<div class="alignright"><?php next_comments_link() ?></div>
-	</div>
- <?php else : // this is displayed if there are no comments so far ?>
+		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
+		<nav role="navigation" id="comment-nav-above" class="site-navigation comment-navigation">
+			<h1 class="assistive-text"><?php _e( 'Comment navigation', 'publish' ); ?></h1>
+			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'publish' ) ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'publish' ) ); ?></div>
+		</nav><!-- #comment-nav-before .site-navigation .comment-navigation -->
+		<?php endif; // check for comment navigation ?>
 
-	<?php if ( comments_open() ) : ?>
-		<!-- If comments are open, but there are no comments. -->
+		<ol class="commentlist">
+			<?php
+				/* Loop through and list the comments. Tell wp_list_comments()
+				 * to use publish_comment() to format the comments.
+				 * If you want to overload this in a child theme then you can
+				 * define publish_comment() and that will be used instead.
+				 * See publish_comment() in inc/template-tags.php for more.
+				 */
+				wp_list_comments( array( 'callback' => 'publish_comment' ) );
+			?>
+		</ol><!-- .commentlist -->
 
-	 <?php else : // comments are closed ?>
-		<!-- If comments are closed. -->
-		
+		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
+		<nav role="navigation" id="comment-nav-below" class="site-navigation comment-navigation">
+			<h1 class="assistive-text"><?php _e( 'Comment navigation', 'publish' ); ?></h1>
+			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'publish' ) ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'publish' ) ); ?></div>
+		</nav><!-- #comment-nav-below .site-navigation .comment-navigation -->
+		<?php endif; // check for comment navigation ?>
 
+	<?php endif; // have_comments() ?>
+
+	<?php
+		// If comments are closed and there are comments, let's leave a little note, shall we?
+		if ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
+	?>
+		<p class="nocomments"><?php _e( 'Comments are closed.', 'publish' ); ?></p>
 	<?php endif; ?>
-<?php endif; ?>
-
-
-<?php if ( comments_open() ) : ?>
 
 	<?php comment_form(); ?>
 
-<?php else : // if you delete this the sky will fall on your head ?>
-<p>
-	Sorry, but commenting on this post is closed. I tend to close comments on 
-	articles older that two weeks in order to avoid spam, however, if you still 
-	wish to say something, you can always reach me at any time on Twitter:
-</p>
-<p>
-	<a class="twitter-mention-button" href="https://twitter.com/intent/tweet?screen_name=kovshenin" data-related="kovshenin">Tweet to @kovshenin</a>
-	<script type="text/javascript">// <![CDATA[
-	!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-	// ]]></script>
-</p>
-<p>
-	Sorry for the inconvenience and thank you so much for your patience!
-</p>
-<?php endif; ?>
+</div><!-- #comments .comments-area -->

@@ -1,84 +1,44 @@
-<?php global $publish; ?><!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<?php
+/**
+ * The Header for our theme.
+ *
+ * Displays all of the <head> section and everything up till <div id="main">
+ *
+ * @package Publish
+ * @since Publish 1.0
+ */
+?><!DOCTYPE html>
+<html <?php language_attributes(); ?>>
 <head>
+<meta charset="<?php bloginfo( 'charset' ); ?>" />
+<meta name="viewport" content="width=device-width" />
+<title><?php wp_title( '|', true, 'right' ); ?></title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+<!--[if lt IE 9]>
+<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
+<![endif]-->
 
-	<!-- Basic Page Needs
-  ================================================== -->
-	<meta charset="utf-8">
-	<title><?php wp_title(''); ?></title>
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-
-	<!-- Mobile Specific Metas
-  ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-	<!-- Favicons
-	================================================== -->
-	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/images/favicon.ico">
-	<!--<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">-->
-	<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?3">
-	<?php
-	if ( is_singular() && get_option( 'thread_comments' ) )
-		wp_enqueue_script( 'comment-reply' );
-	?>
-
-	<?php wp_head(); ?>
-
+<?php wp_head(); ?>
 </head>
-<body <?php body_class($class); ?>>
 
-	<!-- Primary Page Layout
-	================================================== -->
+<body <?php body_class(); ?>>
+<div id="page" class="hfeed site">
+	<header id="masthead" class="site-header" role="banner">
+		<hgroup>
+			<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php echo get_avatar( get_option( 'admin_email' ), 100 ); ?></a>
+			<h1 class="site-title"><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+			<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+		</hgroup>
 
-	<div class="container">
-		<div id="header" class="ten columns offset-by-four">
-			<?php $tag = ( is_home() ) ? 'h1' : 'div'; ?>
-			<<?php echo $tag; ?> id="site-title" style="margin-top: 40px"><a href="<?php echo home_url( '/' ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></<?php echo $tag; ?>>
-			
-			<h5 id="site-description"><?php bloginfo( 'description' ); ?></h5>
-			
-			<nav id="navigation">
-				<?php wp_nav_menu( array( 'depth' => 1, 'theme_location' => 'primary' ) ); ?>
-				
-				<div class="twitter-follow-container" style="float: left; width: 150px;">
-					<a href="https://twitter.com/kovshenin" class="twitter-follow-button" data-show-count="true" data-show-screen-name="false">Follow @kovshenin</a>
-					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-				</div>
-				
-			</nav>
-			
-		</div>
-		
-		<div class="sixteen columns">
-			
-			<div id="page-title" class="ten columns offset-by-four alpha">
-				<strong>
-					<?php if ( is_day() ) : ?>
-						<?php printf( __( 'Daily Archives: %s', 'publish' ), '<span>' . get_the_date() . '</span>' ); ?>
-					<?php elseif ( is_month() ) : ?>
-						<?php printf( __( 'Monthly Archives: %s', 'publish' ), '<span>' . get_the_date( 'F Y' ) . '</span>' ); ?>
-					<?php elseif ( is_year() ) : ?>
-						<?php printf( __( 'Yearly Archives: %s', 'publish' ), '<span>' . get_the_date( 'Y' ) . '</span>' ); ?>
-					<?php elseif ( is_category() ) : ?>
-						<?php printf( __( 'Category Archives: %s', 'publish' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?>
-					<?php elseif ( is_tag() ) : ?>
-						<?php printf( __( 'Tag Archives: %s', 'publish' ), '<span>' . single_tag_title( '', false ) . '</span>' ); ?>
-					<?php elseif ( is_author() ): the_post(); ?>
-						<?php printf( __( 'Author Archives: %s', 'publish' ), '<span>' . get_the_author() . '</span>' ); ?>
-					<?php elseif ( is_archive() ): ?>
-						<?php _e( 'Blog Archives', 'publish' ); ?>
-					<?php elseif ( is_search() ) : ?>
-						<?php printf( __( 'Search Results for: %s', 'publish' ), get_search_query() ); ?>
-					<?php endif; ?>
-				</strong>
-			</div>
-			<br class="clear" />
+		<nav role="navigation" class="site-navigation main-navigation">
+			<h1 class="assistive-text"><?php _e( 'Menu', 'publish' ); ?></h1>
+			<div class="assistive-text skip-link"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'publish' ); ?>"><?php _e( 'Skip to content', 'publish' ); ?></a></div>
+
+			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'depth' => 1 ) ); ?>
+		</nav><!-- .site-navigation .main-navigation -->
+
+		<?php do_action( 'publish_header_after' ); ?>
+	</header><!-- #masthead .site-header -->
+
+	<div id="main">
