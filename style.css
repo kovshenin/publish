@@ -903,3 +903,109 @@ table th {
 .format-status h1.entry-title::before { content: "Status: "; color: #999; font-weight: 300; }
 .format-link h1.entry-title::before { content: "Link: "; color: #999; font-weight: 300; }
 .format-image h1.entry-title::before { content: "Image: "; color: #999; font-weight: 300; }
+
+
+.entry-content .twitter-tweet-rendered {
+    max-width: 100% !important;
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (max-width : 900px)
+ {
+/* Styles */
+
+	#page {
+		width: auto;
+		padding: 40px;
+		margin: 0 auto;
+		position: relative;
+	}
+
+	#masthead,
+	.site-content,
+	#colophon {
+		width: 100%;
+	}
+
+	#masthead {
+		margin-top: 0;
+	}
+
+	.site-title,
+	.site-description {
+		margin-left: 70px;
+		clear: none;
+	}
+
+	.site-logo,
+	.site-logo img {
+		float: left;
+		width: 50px;
+		height: 50px;
+	}
+
+	.main-navigation {
+		padding-top: 20px;
+		width: auto;
+		clear: none;
+		margin-left: -10px;
+	}
+
+	.main-navigation li {
+		display: inline-block;
+		width: auto;
+		padding: 5px 10px;
+	}
+
+	/* Small Navigation */
+	.main-small-navigation {
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: #F2F7F9;
+		border-bottom: solid 1px #DDD;
+		width: 100%;
+	}
+
+	.main-small-navigation ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.main-small-navigation a {
+		display: block;
+		padding: 10px 40px;
+		border-top: solid 1px #ddd;
+	}
+
+	.main-small-navigation .menu-toggle {
+		font-size: 14px;
+		margin: 0;
+		padding: 10px 40px;
+	}
+
+	.main-small-navigation .menu-toggle:before {
+		content: '\2261';
+		margin-left: -20px;
+		margin-right: 10px;
+	}
+
+	.main-small-navigation .menu-toggle.toggled-on {
+		background: white;
+	}
+}
+
+@media only screen and (max-width : 600px) {
+	#masthead {
+		margin-top: 40px;
+	}
+}
+
+/* iPads (portrait) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+/* Styles */
+}

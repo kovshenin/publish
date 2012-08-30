@@ -97,7 +97,7 @@ add_action( 'widgets_init', 'publish_widgets_init' );
 function publish_scripts() {
 	global $post;
 
-	wp_enqueue_style( 'style', get_stylesheet_uri() );
+	wp_enqueue_style( 'style', add_query_arg( 'v', 2, get_stylesheet_uri() ) );
 
 	wp_enqueue_script( 'small-menu', get_template_directory_uri() . '/js/small-menu.js', array( 'jquery' ), '20120206', true );
 
