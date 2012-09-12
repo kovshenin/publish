@@ -862,6 +862,9 @@ h4, h5, h6 {
 	overflow: hidden;
 	width: 24%;
 }
+#secondary form#searchform input[type="text"].field { /* fixes overflow issue */
+	width: 90%;
+}
 #tertiary { /* Sidebar 2 */
 	clear: left;
 }
