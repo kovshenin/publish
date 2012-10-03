@@ -32,20 +32,8 @@ function publish_setup() {
 	require( get_template_directory() . '/inc/template-tags.php' );
 
 	/**
-	 * Custom functions that act independently of the theme templates
-	 */
-	//require( get_template_directory() . '/inc/tweaks.php' );
-
-	/**
-	 * Custom Theme Options
-	 */
-	//require( get_template_directory() . '/inc/theme-options/theme-options.php' );
-
-	/**
 	 * Make theme available for translation
 	 * Translations can be filed in the /languages/ directory
-	 * If you're building a theme based on Publish, use a find and replace
-	 * to change 'publish' to the name of your theme in all the template files
 	 */
 	load_theme_textdomain( 'publish', get_template_directory() . '/languages' );
 
@@ -55,9 +43,14 @@ function publish_setup() {
 	add_theme_support( 'automatic-feed-links' );
 
 	/**
-	 * Enable support for Post Thumbnails
+	 * Enable Custom Backgrounds
 	 */
-	// add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'custom-background' );
+
+	/**
+	 * Enable editor style
+	 */
+	add_editor_style();
 
 	/**
 	 * This theme uses wp_nav_menu() in one location.
@@ -110,8 +103,3 @@ function publish_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'publish_scripts' );
-
-/**
- * Implement the Custom Header feature
- */
-//require( get_template_directory() . '/inc/custom-header.php' );
