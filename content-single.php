@@ -30,7 +30,7 @@
 				if ( '' != $tag_list ) {
 					$meta_text = __( 'tagged %2$s.', 'publish' );
 				} else {
-
+					$meta_text = '';
 				}
 
 			} else {
