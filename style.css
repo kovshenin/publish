@@ -783,6 +783,23 @@ body {
 	margin-top: 20px;
 }
 
+.infinite-scroll #nav-below {
+	display: none;
+}
+
+.infinite-loader {
+	display: block;
+	padding-left: 50%;
+}
+
+.infinite-loader .spinner {
+	margin-left: -17px;
+}
+
+#infinite-handle {
+	margin-top: 20px;
+}
+
 h1, h2, h3, h4, h5, h6 {
 	font-weight: bold;
 	margin: 20px 0;

@@ -63,6 +63,14 @@ function publish_setup() {
 	 * Add support for the Aside Post Formats
 	 */
 	add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'chat', 'image', 'video' ) );
+
+	/**
+	 * Add support for infinite scroll
+	 */
+	add_theme_support( 'infinite-scroll', array(
+		'container' => 'content',
+		'footer' => 'page',
+	) );
 }
 endif; // publish_setup
 add_action( 'after_setup_theme', 'publish_setup' );
