@@ -111,3 +111,19 @@ function publish_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'publish_scripts' );
+
+/**
+ * Footer credits, with support for infinite scroll.
+ */
+function publish_footer_credits() {
+	echo get_publish_footer_credits();
+}
+
+function get_publish_footer_credits( $credits ) {
+	$credits = sprintf( __( 'Powered by %s', 'publish' ), '<a href="http://wordpress.org/" rel="generator">WordPress</a>' );
+        $credits .= '<span class="sep"> | </span>';
+        $credits .= sprintf( __( 'Theme: %1$s by %2$s.', 'publish' ), 'Publish', '<a href="http://kovshenin.com/" rel="designer">Konstantin Kovshenin</a>' );
+	return $credits;
+}
+add_filter( 'infinite_scroll_credit', 'get_publish_footer_credits' );
+add_filter( 'publish_credits', 'publish_footer_credits' );
