@@ -66,6 +66,7 @@ function publish_setup() {
 
 	/**
 	 * Add support for infinite scroll
+	 * @since Publish 1.2, Jetpack 2.0
 	 */
 	add_theme_support( 'infinite-scroll', array(
 		'container' => 'content',
@@ -114,6 +115,7 @@ add_action( 'wp_enqueue_scripts', 'publish_scripts' );
 
 /**
  * Footer credits, with support for infinite scroll.
+ * @since Publish 1.2
  */
 function publish_footer_credits() {
 	echo get_publish_footer_credits();
