@@ -128,4 +128,4 @@ function get_publish_footer_credits( $credits ) {
 	return $credits;
 }
 add_filter( 'infinite_scroll_credit', 'get_publish_footer_credits' );
-add_filter( 'publish_credits', 'publish_footer_credits' );
+add_action( 'publish_credits', 'publish_footer_credits' );
