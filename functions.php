@@ -150,6 +150,9 @@ function get_publish_logo() {
 	$url = add_query_arg( 's', absint( $size ), $url );
 	$url = add_query_arg( 'd', 'mm', $url ); // Mystery man default
 
+	// Allow hard-core devs to use their own URL.
+	$url = apply_filters( 'publish_logo_url', $url, $alt, $size );
+
 	return sprintf( '<img src="%s" alt="%s" width="%d" height="%d" class="no-grav">', esc_url( $url ), esc_attr( $alt ), absint( $size ), absint( $size ) );
 }
 endif; // function_exists
