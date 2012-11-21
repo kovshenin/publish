@@ -5,6 +5,11 @@ http://wordpress.org/support/topic/faq-how-to-change-the-logoavatar-in-the-heade
 
 Version history:
 
+1.2.2
+
+* No more hovercards on the logo
+* Respect width/height attributes for images in the content area
+
 1.2.1
 
 * Better wp_title usage
