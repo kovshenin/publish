@@ -115,6 +115,7 @@ add_action( 'wp_enqueue_scripts', 'publish_scripts' );
 
 /**
  * Footer credits, with support for infinite scroll.
+ *
  * @since Publish 1.2
  */
 function publish_footer_credits() {
@@ -129,3 +130,26 @@ function get_publish_footer_credits( $credits = '' ) {
 }
 add_filter( 'infinite_scroll_credit', 'get_publish_footer_credits' );
 add_action( 'publish_credits', 'publish_footer_credits' );
+
+/**
+ * Get Publish Logo (pluggable)
+ *
+ * Returns the markup for the theme logo, displayed in the
+ * top-left area. Somewhat similar to get_avatar().
+ *
+ * @since Publish 1.2.2
+ */
+if ( ! function_exists( 'get_publish_logo' ) ) :
+function get_publish_logo() {
+	$email = get_option( 'admin_email' );
+	$size = apply_filters( 'publish_logo_size', 100 );
+	$alt = get_bloginfo( 'name' );
+
+	$url = ( is_ssl() ) ? 'https://secure.gravatar.com' : 'http://gravatar.com';
+	$url .= sprintf( '/avatar/%s/', md5( $email ) );
+	$url = add_query_arg( 's', absint( $size ), $url );
+	$url = add_query_arg( 'd', 'mm', $url ); // Mystery man default
+
+	return sprintf( '<img src="%s" alt="%s" width="%d" height="%d">', esc_url( $url ), esc_attr( $alt ), absint( $size ), absint( $size ) );
+}
+endif; // function_exists
