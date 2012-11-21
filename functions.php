@@ -150,6 +150,6 @@ function get_publish_logo() {
 	$url = add_query_arg( 's', absint( $size ), $url );
 	$url = add_query_arg( 'd', 'mm', $url ); // Mystery man default
 
-	return sprintf( '<img src="%s" alt="%s" width="%d" height="%d">', esc_url( $url ), esc_attr( $alt ), absint( $size ), absint( $size ) );
+	return sprintf( '<img src="%s" alt="%s" width="%d" height="%d" class="no-grav">', esc_url( $url ), esc_attr( $alt ), absint( $size ), absint( $size ) );
 }
 endif; // function_exists
