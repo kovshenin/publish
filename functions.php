@@ -141,17 +141,26 @@ add_action( 'publish_credits', 'publish_footer_credits' );
  */
 if ( ! function_exists( 'get_publish_logo' ) ) :
 function get_publish_logo() {
+
+	// Allow hard-core devs to short-circuit the logo html via filter.
+	if ( false !== $html = apply_filters( 'publish_logo_html', false ) )
+		return $html;
+
 	$email = get_option( 'admin_email' );
 	$size = apply_filters( 'publish_logo_size', 100 );
 	$alt = get_bloginfo( 'name' );
 
+	// Get default from Discussion Settings.
+	$default = get_option( 'avatar_default', 'mystery' );
+	if ( 'mystery' == $default )
+		$default = 'mm';
+	elseif ( 'gravatar_default' == $default )
+		$default = '';
+
 	$url = ( is_ssl() ) ? 'https://secure.gravatar.com' : 'http://gravatar.com';
 	$url .= sprintf( '/avatar/%s/', md5( $email ) );
 	$url = add_query_arg( 's', absint( $size ), $url );
-	$url = add_query_arg( 'd', 'mm', $url ); // Mystery man default
-
-	// Allow hard-core devs to use their own URL.
-	$url = apply_filters( 'publish_logo_url', $url, $alt, $size );
+	$url = add_query_arg( 'd', urlencode( $default ), $url ); // Mystery man default
 
 	return sprintf( '<img src="%s" alt="%s" width="%d" height="%d" class="no-grav">', esc_url( $url ), esc_attr( $alt ), absint( $size ), absint( $size ) );
 }
