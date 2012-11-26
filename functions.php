@@ -72,8 +72,8 @@ function publish_setup() {
 		'default-image' => get_publish_default_header_image(),
 		'width' => 100,
 		'height' => 100,
-		'flex-width' => 100,
-		'flex-height' => 100,
+		'flex-width' => true,
+		'flex-height' => true,
 		'header-text' => false,
 	) );
 
