@@ -132,7 +132,7 @@ add_action( 'wp_enqueue_scripts', 'publish_scripts' );
  * @since Publish 1.2
  */
 function publish_footer_credits() {
-	echo get_publish_footer_credits();
+	echo publish_get_footer_credits();
 }
 add_action( 'publish_credits', 'publish_footer_credits' );
 
