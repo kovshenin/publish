@@ -69,7 +69,7 @@ function publish_setup() {
 	 * @since Publish 1.3
 	 */
 	add_theme_support( 'custom-header', array(
-		'default-image' => get_publish_default_header_image(),
+		'default-image' => publish_get_default_header_image(),
 		'width' => 100,
 		'height' => 100,
 		'flex-width' => true,
@@ -134,15 +134,15 @@ add_action( 'wp_enqueue_scripts', 'publish_scripts' );
 function publish_footer_credits() {
 	echo get_publish_footer_credits();
 }
+add_action( 'publish_credits', 'publish_footer_credits' );
 
-function get_publish_footer_credits( $credits = '' ) {
+function publish_get_footer_credits( $credits = '' ) {
 	$credits = sprintf( __( 'Powered by %s', 'publish' ), '<a href="http://wordpress.org/" rel="generator">WordPress</a>' );
         $credits .= '<span class="sep"> | </span>';
         $credits .= sprintf( __( 'Theme: %1$s by %2$s.', 'publish' ), 'Publish', '<a href="http://kovshenin.com/" rel="designer">Konstantin Kovshenin</a>' );
 	return $credits;
 }
-add_filter( 'infinite_scroll_credit', 'get_publish_footer_credits' );
-add_action( 'publish_credits', 'publish_footer_credits' );
+add_filter( 'infinite_scroll_credit', 'publish_get_footer_credits' );
 
 /**
  * A default header image
@@ -151,7 +151,7 @@ add_action( 'publish_credits', 'publish_footer_credits' );
  *
  * @since Publish 1.3
  */
-function get_publish_default_header_image() {
+function publish_get_default_header_image() {
 	$email = get_option( 'admin_email' );
 
 	// Get default from Discussion Settings.
