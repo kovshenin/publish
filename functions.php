@@ -65,6 +65,19 @@ function publish_setup() {
 	add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'chat', 'image', 'video' ) );
 
 	/**
+	 * Custom headers support
+	 * @since Publish 1.3
+	 */
+	add_theme_support( 'custom-header', array(
+		'default-image' => get_publish_default_header_image(),
+		'width' => 100,
+		'height' => 100,
+		'flex-width' => 100,
+		'flex-height' => 100,
+		'header-text' => false,
+	) );
+
+	/**
 	 * Add support for infinite scroll
 	 * @since Publish 1.2, Jetpack 2.0
 	 */
@@ -99,7 +112,7 @@ add_action( 'widgets_init', 'publish_widgets_init' );
 function publish_scripts() {
 	global $post;
 
-	wp_enqueue_style( 'style', add_query_arg( 'v', 2, get_stylesheet_uri() ) );
+	wp_enqueue_style( 'style', add_query_arg( 'v', 3, get_stylesheet_uri() ) );
 
 	wp_enqueue_script( 'small-menu', get_template_directory_uri() . '/js/small-menu.js', array( 'jquery' ), '20120206', true );
 
@@ -132,23 +145,14 @@ add_filter( 'infinite_scroll_credit', 'get_publish_footer_credits' );
 add_action( 'publish_credits', 'publish_footer_credits' );
 
 /**
- * Get Publish Logo (pluggable)
+ * A default header image
  *
- * Returns the markup for the theme logo, displayed in the
- * top-left area. Somewhat similar to get_avatar().
+ * Use the admin email's gravatar as the default header image.
  *
- * @since Publish 1.2.2
+ * @since Publish 1.3
  */
-if ( ! function_exists( 'get_publish_logo' ) ) :
-function get_publish_logo() {
-
-	// Allow hard-core devs to short-circuit the logo html via filter.
-	if ( false !== $html = apply_filters( 'publish_logo_html', false ) )
-		return $html;
-
+function get_publish_default_header_image() {
 	$email = get_option( 'admin_email' );
-	$size = apply_filters( 'publish_logo_size', 100 );
-	$alt = get_bloginfo( 'name' );
 
 	// Get default from Discussion Settings.
 	$default = get_option( 'avatar_default', 'mystery' );
@@ -159,9 +163,8 @@ function get_publish_logo() {
 
 	$url = ( is_ssl() ) ? 'https://secure.gravatar.com' : 'http://gravatar.com';
 	$url .= sprintf( '/avatar/%s/', md5( $email ) );
-	$url = add_query_arg( 's', absint( $size ), $url );
+	$url = add_query_arg( 's', 100, $url );
 	$url = add_query_arg( 'd', urlencode( $default ), $url ); // Mystery man default
 
-	return sprintf( '<img src="%s" alt="%s" width="%d" height="%d" class="no-grav">', esc_url( $url ), esc_attr( $alt ), absint( $size ), absint( $size ) );
+	return esc_url_raw( $url );
 }
-endif; // function_exists
