@@ -66,7 +66,7 @@ function publish_setup() {
 
 	/**
 	 * Custom headers support
-	 * @since Publish 1.3
+	 * @since Publish 1.2.3
 	 */
 	add_theme_support( 'custom-header', array(
 		'default-image' => publish_get_default_header_image(),
@@ -166,7 +166,7 @@ add_filter( 'the_title', 'publish_post_format_title' );
  *
  * Use the admin email's gravatar as the default header image.
  *
- * @since Publish 1.3
+ * @since Publish 1.2.3
  */
 function publish_get_default_header_image() {
 	$email = get_option( 'admin_email' );
