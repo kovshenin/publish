@@ -328,7 +328,7 @@ a:visited {
 a:hover,
 a:focus,
 a:active {
-	color: #1E8DAF;
+	color: #1E8AB6;
 }
 
 /* Alignment */
@@ -447,10 +447,6 @@ img.aligncenter {
 .site:after,
 .entry-content:after {
 	clear: both;
-}
-.custom-background .site {
-	padding: 0 40px;
-	background-color: #ffffff;
 }
 .site-main article.sticky {
 	margin-right: -40px;
@@ -895,7 +891,7 @@ h6 {
 }
 
 .entry-title a {
-	color: inherit;
+	color: #404040;
 	text-decoration: none;
 }
 
@@ -914,7 +910,9 @@ h6 {
 }
 
 .site {
+	background-color: #ffffff;
 	margin: 60px auto;
+	padding: 0 40px;
 	width: 750px;
 }
 
