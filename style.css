@@ -480,10 +480,12 @@ img.aligncenter {
 .entry-summary {
 	margin: 1.5em 0 0;
 }
-.entry-content > .sharedaddy,
+.entry-content > .sharedaddy {
+	margin: 1.5em 0;
+}
 .page-links {
 	clear: both;
-	margin: 1.5em 0;
+	margin: 0 0 1.5em;
 }
 
 .entry-content .twitter-tweet-rendered {
