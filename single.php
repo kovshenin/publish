@@ -13,8 +13,6 @@ get_header(); ?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php publish_content_nav( 'nav-above' ); ?>
-
 				<?php get_template_part( 'content', 'single' ); ?>
 
 				<?php publish_content_nav( 'nav-below' ); ?>
