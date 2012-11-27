@@ -8,14 +8,27 @@
  * @since Publish 1.0
  */
 
-if ( ! function_exists( 'publish_content_nav' ) ):
+if ( ! function_exists( 'publish_content_nav' ) ) :
 /**
  * Display navigation to next/previous pages when applicable
  *
  * @since Publish 1.0
  */
 function publish_content_nav( $nav_id ) {
-	global $wp_query;
+	global $wp_query, $post;
+
+	// Don't print empty markup on single pages if there's nowhere to navigate.
+	if ( is_single() ) {
+		$previous = ( is_attachment() ) ? get_post( $post->post_parent ) : get_adjacent_post( false, '', true );
+		$next = get_adjacent_post( false, '', false );
+
+		if ( ! $next && ! $previous )
+			return;
+	}
+
+	// Don't print empty markup in archives if there's only one page.
+	if ( $wp_query->max_num_pages < 2 && ( is_home() || is_archive() || is_search() ) )
+		return;
 
 	$nav_class = 'site-navigation paging-navigation';
 	if ( is_single() )
@@ -57,16 +70,10 @@ if ( ! function_exists( 'publish_comment' ) ) :
  */
 function publish_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
-	switch ( $comment->comment_type ) :
-		case 'pingback' :
-		case 'trackback' :
-	?>
+	if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_type ) : ?>
 	<li class="post pingback">
-		<p><?php _e( 'Pingback:', 'publish' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( '(Edit)', 'publish' ), ' ' ); ?></p>
-	<?php
-			break;
-		default :
-	?>
+		<p><?php comment_author_link(); ?><?php edit_comment_link( __( '(Edit)', 'publish' ), ' ' ); ?></p> 
+	<?php else : ?>
 	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
 		<article id="comment-<?php comment_ID(); ?>" class="comment">
 			<footer>
@@ -98,8 +105,7 @@ function publish_comment( $comment, $args, $depth ) {
 		</article><!-- #comment-## -->
 
 	<?php
-			break;
-	endswitch;
+	endif;
 }
 endif; // ends check for publish_comment()
 
@@ -110,7 +116,7 @@ if ( ! function_exists( 'publish_posted_on' ) ) :
  * @since Publish 1.0
  */
 function publish_posted_on() {
-	printf( __( 'Posted on <a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s" pubdate>%4$s</time></a><span class="byline"> by <span class="author vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span>', 'publish' ),
+	printf( __( 'Posted on <a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s" pubdate>%4$s</time></a><span class="byline"> by <span class="author vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span>', 'publish' ) . '.',
 		esc_url( get_permalink() ),
 		esc_attr( get_the_time() ),
 		esc_attr( get_the_date( 'c' ) ),

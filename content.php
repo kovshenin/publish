@@ -18,7 +18,6 @@
 	<div class="entry-content">
 		<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'publish' ) ); ?>
 		<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'publish' ), 'after' => '</div>' ) ); ?>
-		<div class="clearfloat"></div>
 	</div><!-- .entry-content -->
 	<?php endif; ?>
 
@@ -31,7 +30,7 @@
 				if ( $categories_list && publish_categorized_blog() ) :
 			?>
 			<span class="cat-links">
-				<?php printf( __( 'in %1$s', 'publish' ), $categories_list ); ?>
+				<?php printf( __( 'Posted in %1$s', 'publish' ), $categories_list ); ?>
 			</span>
 			<?php endif; // End if categories ?>
 
@@ -41,7 +40,7 @@
 				if ( $tags_list ) :
 			?>
 			<span class="sep"> | </span>
-			<span class="tag-links">
+			<span class="tags-links">
 				<?php printf( __( 'Tagged %1$s', 'publish' ), $tags_list ); ?>
 			</span>
 			<?php endif; // End if $tags_list ?>
@@ -52,5 +51,6 @@
 		<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'publish' ), __( '1 Comment', 'publish' ), __( '% Comments', 'publish' ) ); ?></span>
 		<?php endif; ?>
 
+		<?php edit_post_link( __( 'Edit', 'publish' ), '<span class="sep"> | </span><span class="edit-link">', '</span>' ); ?>
 	</footer><!-- .entry-meta -->
 </article><!-- #post-<?php the_ID(); ?> -->

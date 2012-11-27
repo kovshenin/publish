@@ -15,6 +15,7 @@
 	<div class="entry-content">
 		<?php the_content(); ?>
 		<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'publish' ), 'after' => '</div>' ) ); ?>
-		<div class="clearfloat"></div>
 	</div><!-- .entry-content -->
+
+	<?php edit_post_link( __( 'Edit', 'publish' ), '<footer class="entry-meta"><span class="edit-link">', '</span></footer>' ); ?>
 </article><!-- #post-<?php the_ID(); ?> -->

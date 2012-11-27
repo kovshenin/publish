@@ -96,12 +96,12 @@ add_action( 'after_setup_theme', 'publish_setup' );
  */
 function publish_widgets_init() {
 	register_sidebar( array(
-		'name' => __( 'Sidebar', 'publish' ),
-		'id' => 'sidebar-1',
+		'name'          => __( 'Sidebar', 'publish' ),
+		'id'            => 'sidebar-1',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
+		'after_widget'  => "</aside>",
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => '</h1>',
 	) );
 }
 add_action( 'widgets_init', 'publish_widgets_init' );
@@ -112,7 +112,7 @@ add_action( 'widgets_init', 'publish_widgets_init' );
 function publish_scripts() {
 	global $post;
 
-	wp_enqueue_style( 'style', add_query_arg( 'v', 3, get_stylesheet_uri() ) );
+	wp_enqueue_style( 'publish-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'small-menu', get_template_directory_uri() . '/js/small-menu.js', array( 'jquery' ), '20120206', true );
 
@@ -143,6 +143,23 @@ function publish_get_footer_credits( $credits = '' ) {
 	return $credits;
 }
 add_filter( 'infinite_scroll_credit', 'publish_get_footer_credits' );
+
+/**
+ * Prepends the post format name to post titles on single view
+ *
+ * @param string $title
+ * @return string
+ *
+ * @since Publish 1.2-wpcom
+ */
+function publish_post_format_title( $title ) {
+
+	if ( is_single() && (bool) get_post_format() )
+		$title = sprintf( '<span class="entry-format">%1$s: </span>%2$s', get_post_format_string( get_post_format() ), $title );
+
+	return $title;
+}
+add_filter( 'the_title', 'publish_post_format_title' );
 
 /**
  * A default header image

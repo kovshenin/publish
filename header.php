@@ -43,4 +43,4 @@
 		<?php do_action( 'publish_header_after' ); ?>
 	</header><!-- #masthead .site-header -->
 
-	<div id="main">
+	<div id="main" class="site-main">
