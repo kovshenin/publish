@@ -612,11 +612,13 @@ object {
 	overflow: hidden;
 	/* margin: 0 0 1.5em; */
 }
-.site-content .nav-previous {
+.site-content .nav-previous,
+.site-navigation .previous-image {
 	float: left;
 	width: 40%;
 }
-.site-content .nav-next {
+.site-content .nav-next,
+.site-navigation .next-image {
 	float: right;
 	width: 40%;
 	text-align: right;
