@@ -5,6 +5,13 @@ http://wordpress.org/support/topic/faq-how-to-change-the-logoavatar-in-the-heade
 
 Version history:
 
+1.3
+
+* A whole lot of changes from @obenland
+* A lot of code cleanups, up to date with the latest _s
+* Added support for custom headers (with fallback to Gravatar)
+* A lot more still to come
+
 1.2.2
 
 * No more hovercards on the logo
