@@ -23,8 +23,11 @@
 
 	<footer class="entry-meta">
 		<?php if ( 'post' == get_post_type() ) : // Hide category and tag text for pages on Search ?>
-			<?php publish_posted_on(); ?>
 			<?php
+				if ( ! is_sticky() ) :
+					publish_posted_on();
+				endif;
+
 				/* translators: used between list items, there is a space after the comma */
 				$categories_list = get_the_category_list( __( ', ', 'publish' ) );
 				if ( $categories_list && publish_categorized_blog() ) :
