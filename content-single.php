@@ -13,7 +13,6 @@
 	<div class="entry-content">
 		<?php the_content(); ?>
 		<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'publish' ), 'after' => '</div>' ) ); ?>
-		<div class="clearfloat"></div>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-meta">

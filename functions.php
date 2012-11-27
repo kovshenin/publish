@@ -70,19 +70,18 @@ function publish_setup() {
 	 */
 	add_theme_support( 'custom-header', array(
 		'default-image' => publish_get_default_header_image(),
-		'width' => 100,
-		'height' => 100,
-		'flex-width' => true,
-		'flex-height' => true,
-		'header-text' => false,
+		'width'         => 100,
+		'height'        => 100,
+		'flex-width'    => true,
+		'flex-height'   => true,
+		'header-text'   => false,
 	) );
 
 	/**
 	 * Add support for infinite scroll
-	 * @since Publish 1.2, Jetpack 2.0
+	 * @since Publish 1.2
 	 */
 	add_theme_support( 'infinite-scroll', array(
-		'container' => 'content',
 		'footer' => 'page',
 	) );
 }
@@ -99,7 +98,7 @@ function publish_widgets_init() {
 		'name'          => __( 'Sidebar', 'publish' ),
 		'id'            => 'sidebar-1',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => "</aside>",
+		'after_widget'  => '</aside>',
 		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => '</h1>',
 	) );
@@ -127,7 +126,7 @@ function publish_scripts() {
 add_action( 'wp_enqueue_scripts', 'publish_scripts' );
 
 /**
- * Footer credits, with support for infinite scroll.
+ * Echoes the theme's footer credits
  *
  * @since Publish 1.2
  */
@@ -136,11 +135,19 @@ function publish_footer_credits() {
 }
 add_action( 'publish_credits', 'publish_footer_credits' );
 
+/**
+ * Returns the theme's footer credits
+ *
+ * @return string
+ *
+ * @since Publish 1.2
+ */
 function publish_get_footer_credits( $credits = '' ) {
-	$credits = sprintf( __( 'Powered by %s', 'publish' ), '<a href="http://wordpress.org/" rel="generator">WordPress</a>' );
-        $credits .= '<span class="sep"> | </span>';
-        $credits .= sprintf( __( 'Theme: %1$s by %2$s.', 'publish' ), 'Publish', '<a href="http://kovshenin.com/" rel="designer">Konstantin Kovshenin</a>' );
-	return $credits;
+	return sprintf(
+		'%1$s %2$s',
+		'<a href="http://wordpress.org/" rel="generator">Proudly powered by WordPress</a>',
+		sprintf( __( 'Theme: %1$s by %2$s.', 'publish' ), 'Publish', '<a href="http://kovshenin.com/" rel="designer">Konstantin Kovshenin</a>' )
+	);
 }
 add_filter( 'infinite_scroll_credit', 'publish_get_footer_credits' );
 
@@ -172,7 +179,7 @@ function publish_get_default_header_image() {
 	$email = get_option( 'admin_email' );
 
 	// Get default from Discussion Settings.
-	$default = get_option( 'avatar_default', 'mystery' );
+	$default = get_option( 'avatar_default', 'mystery' ); // Mystery man default
 	if ( 'mystery' == $default )
 		$default = 'mm';
 	elseif ( 'gravatar_default' == $default )
@@ -180,8 +187,10 @@ function publish_get_default_header_image() {
 
 	$url = ( is_ssl() ) ? 'https://secure.gravatar.com' : 'http://gravatar.com';
 	$url .= sprintf( '/avatar/%s/', md5( $email ) );
-	$url = add_query_arg( 's', 100, $url );
-	$url = add_query_arg( 'd', urlencode( $default ), $url ); // Mystery man default
+	$url = add_query_arg( array(
+		's' => 100,
+		'd' => urlencode( $default ),
+	), $url );
 
 	return esc_url_raw( $url );
 }
