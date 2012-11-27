@@ -78,7 +78,7 @@ function publish_setup() {
 	) );
 
 	/**
-	 * Add support for infinite scroll
+	 * Add support for Infinite Scroll
 	 * @since Publish 1.2
 	 */
 	add_theme_support( 'infinite-scroll', array(
