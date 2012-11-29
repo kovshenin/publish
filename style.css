@@ -1041,6 +1041,7 @@ table th {
 		width: 100%;
 		border-bottom: solid 1px #DDD;
 		background: #F2F7F9;
+		margin-top: 0;
 	}
 
 	.main-small-navigation ul {
