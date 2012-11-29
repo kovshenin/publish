@@ -65,19 +65,6 @@ function publish_setup() {
 	add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'chat', 'image', 'video' ) );
 
 	/**
-	 * Custom headers support
-	 * @since Publish 1.2.3
-	 */
-	add_theme_support( 'custom-header', array(
-		'default-image' => publish_get_default_header_image(),
-		'width'         => 100,
-		'height'        => 100,
-		'flex-width'    => true,
-		'flex-height'   => true,
-		'header-text'   => false,
-	) );
-
-	/**
 	 * Add support for Infinite Scroll
 	 * @since Publish 1.2
 	 */
@@ -169,28 +156,6 @@ function publish_post_format_title( $title ) {
 add_filter( 'the_title', 'publish_post_format_title' );
 
 /**
- * A default header image
- *
- * Use the admin email's gravatar as the default header image.
- *
- * @since Publish 1.2.3
+ * Implement the Custom Header feature
  */
-function publish_get_default_header_image() {
-	$email = get_option( 'admin_email' );
-
-	// Get default from Discussion Settings.
-	$default = get_option( 'avatar_default', 'mystery' ); // Mystery man default
-	if ( 'mystery' == $default )
-		$default = 'mm';
-	elseif ( 'gravatar_default' == $default )
-		$default = '';
-
-	$url = ( is_ssl() ) ? 'https://secure.gravatar.com' : 'http://gravatar.com';
-	$url .= sprintf( '/avatar/%s/', md5( $email ) );
-	$url = add_query_arg( array(
-		's' => 100,
-		'd' => urlencode( $default ),
-	), $url );
-
-	return esc_url_raw( $url );
-}
+require( get_template_directory() . '/inc/custom-header.php' );
