@@ -837,7 +837,8 @@ body {
 	display: none;
 }
 
-.infinite-scroll .main-navigation {
+.infinite-scroll .main-navigation,
+.infinite-scroll .main-small-navigation {
 	display: block;
 }
 
