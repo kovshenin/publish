@@ -146,14 +146,22 @@ add_filter( 'infinite_scroll_credit', 'publish_get_footer_credits' );
  *
  * @since Publish 1.2-wpcom
  */
-function publish_post_format_title( $title ) {
+function publish_post_format_title( $title, $post_id = false ) {
+	if ( ! $post_id )
+		return $title;
+
+	$post = get_post( $post_id );
+
+	// Prevent prefixes on menus and other areas that use the_title filter.
+	if ( ! $post || $post->post_type != 'post' )
+		return $title;
 
 	if ( is_single() && (bool) get_post_format() )
 		$title = sprintf( '<span class="entry-format">%1$s: </span>%2$s', get_post_format_string( get_post_format() ), $title );
 
 	return $title;
 }
-add_filter( 'the_title', 'publish_post_format_title' );
+add_filter( 'the_title', 'publish_post_format_title', 10, 2 );
 
 /**
  * Implement the Custom Header feature
