@@ -1,9 +1,13 @@
 Publish is a clean minimal theme which puts you and your content on stage. Ideal for single-author blogs.
 
-If you would like to change the top-left image/logo/avatar, please refer to this thread:
-http://wordpress.org/support/topic/faq-how-to-change-the-logoavatar-in-the-header
-
 Version history:
+
+1.2.4
+
+* Fixed post formats appending to menus bug
+* Added hidpi screenshot
+* Support header images prior to 3.4
+* Other minor bug fixes and enhancements
 
 1.2.3
 
