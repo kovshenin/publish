@@ -1,0 +1,246 @@
+# Translation of Publish in Russian
+# This file is distributed under the same license as the Publish package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2013-03-12 08:17:54+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: GlotPress/0.1\n"
+"Project-Id-Version: Publish\n"
+
+#: ../404.php:16
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Извините, страница не найдена."
+
+#: ../404.php:20
+msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
+msgstr "Не найдено, попробуйте следующие ссылки, или воспользуйтесь поиском."
+
+#: ../404.php:27
+msgid "Most Used Categories"
+msgstr "Популярные категории"
+
+#: ../404.php:35
+msgid "Try looking in the monthly archives. %1$s"
+msgstr "Посмотрите в архивах по месяцам. %1$s"
+
+#: ../archive.php:22
+msgid "Category Archives: %s"
+msgstr "Архивы категории: %s"
+
+#: ../archive.php:25
+msgid "Tag Archives: %s"
+msgstr "Архивы метки: %s"
+
+#: ../archive.php:32
+msgid "Author Archives: %s"
+msgstr "Архивы автора: %s"
+
+#: ../archive.php:41
+msgid "Daily Archives: %s"
+msgstr "Архивы по дням: %s"
+
+#: ../archive.php:44
+msgid "Monthly Archives: %s"
+msgstr "Архивы по месяцам: %s"
+
+#: ../archive.php:47
+msgid "Yearly Archives: %s"
+msgstr "Архивы по годам: %s"
+
+#: ../archive.php:50
+msgid "Archives"
+msgstr "Архивы"
+
+#: ../comments.php:37 ../comments.php:57
+msgid "Comment navigation"
+msgstr "Навигация по комментариям"
+
+#: ../comments.php:38 ../comments.php:58
+msgid "&larr; Older Comments"
+msgstr "&larr; Старые комментарии"
+
+#: ../comments.php:39 ../comments.php:59
+msgid "Newer Comments &rarr;"
+msgstr "Новые комментарии &rarr;"
+
+#: ../comments.php:69
+msgid "Comments are closed."
+msgstr "Комментарии закрыты"
+
+#: ../content-page.php:17 ../content-single.php:15 ../content.php:20
+#: ../image.php:86
+msgid "Pages:"
+msgstr "Страницы:"
+
+#: ../content-page.php:20 ../content-single.php:54 ../content.php:57
+#: ../image.php:34 ../image.php:100
+msgid "Edit"
+msgstr "Изменить"
+
+#: ../content-single.php:22 ../content-single.php:25 ../content.php:32
+#: ../content.php:42
+msgid ", "
+msgstr ","
+
+#: ../content-single.php:30
+msgid "This entry was tagged %2$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr "Метки: %2$s. Добавить <a href=\"%3$s\" title=\"Постояння ссылка на %4$s\" rel=\"bookmark\">постоянную ссылку</a> в закладки."
+
+#: ../content-single.php:32
+msgid "Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr "Добавить <a href=\"%3$s\" title=\"Постоянная ссылка на %4$s\" rel=\"bookmark\">постоянную ссылку</a> в закладки."
+
+#: ../content-single.php:38
+msgid "This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr "Запись опубликована в %1$s с метками %2$s. Добавить <a href=\"%3$s\" title=\"Постоянная ссылка на %4$s\" rel=\"bookmark\">постоянную ссылку</a> в закладки."
+
+#: ../content-single.php:40
+msgid "This entry was posted in %1$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr "Запись опубликована в %1$s. Добавить <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">постоянную ссылку</a> в закладки."
+
+#: ../content.php:10
+msgid "Permalink to %s"
+msgstr "Постоянная ссылка на %s"
+
+#: ../content.php:19
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Читать далее <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../content.php:36
+msgid "Posted in %1$s"
+msgstr "Опубликовано в %1$s"
+
+#: ../content.php:47
+msgid "Tagged %1$s"
+msgstr "Метки: %1$s"
+
+#: ../content.php:54
+msgid "Leave a comment"
+msgstr "Оставить комментарий"
+
+#: ../content.php:54
+msgid "1 Comment"
+msgstr "Один комментарий"
+
+#: ../content.php:54
+msgid "% Comments"
+msgstr "Комментариев: %"
+
+#: ../functions.php:59
+msgid "Primary Menu"
+msgstr "Основное меню"
+
+#: ../functions.php:85
+msgid "Sidebar"
+msgstr "Боковая колонка"
+
+#: ../functions.php:136
+msgid "Theme: %1$s by %2$s."
+msgstr "Тема: %1$s от %2$s."
+
+#: ../header.php:39
+msgid "Menu"
+msgstr "Меню"
+
+#: ../header.php:40
+msgid "Skip to content"
+msgstr "Перейти к основному содержанию"
+
+#: ../image.php:24
+msgid "Published <span class=\"entry-date\"><time class=\"entry-date\" datetime=\"%1$s\" pubdate>%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%7$s</a>"
+msgstr "Опубликовано <span class=\"entry-date\"><time class=\"entry-date\" datetime=\"%1$s\" pubdate>%2$s</time></span> в <a href=\"%3$s\" title=\"Ссылка на изображение\">%4$s &times; %5$s</a> в <a href=\"%6$s\" title=\"Вернуться к %7$s\" rel=\"gallery\">%7$s</a>"
+
+#: ../image.php:38
+msgid "&larr; Previous"
+msgstr "&larr; Назад"
+
+#: ../image.php:39
+msgid "Next &rarr;"
+msgstr "Далее &rarr;"
+
+#: ../image.php:92
+msgid "<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr "Вы можете <a class=\"comment-link\" href=\"#respond\" title=\"Оставить комментарий\">оставить комментарий</a> или уведомление: <a class=\"trackback-link\" href=\"%s\" title=\"Адрес уведомления\" rel=\"trackback\">адрес уведомления</a>."
+
+#: ../image.php:94
+msgid "Comments are closed, but you can leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr "Комментарии ограничены, но Вы можете оставить уведомление: <a class=\"trackback-link\" href=\"%s\" title=\"Адрес уведомлений\" rel=\"trackback\">адрес уведомлений</a>."
+
+#: ../image.php:96
+msgid "Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">post a comment</a>."
+msgstr "Уведомления ограничены, но Вы можете <a class=\"comment-link\" href=\"#respond\" title=\"Оставить комментарий\">оставить комментарий</a>."
+
+#: ../image.php:98
+msgid "Both comments and trackbacks are currently closed."
+msgstr "Комментарии закрыты."
+
+#: ../no-results.php:14
+msgid "Nothing Found"
+msgstr "Не найдено"
+
+#: ../no-results.php:20
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "Готовы опубликовать вашу новую запись? <a href=\"%1$s\">Начните здесь</a>."
+
+#: ../no-results.php:24
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "Извините, ничего не найдено по вашему поисковому запросу. Попробуйте его изменить."
+
+#: ../no-results.php:29
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "Мы не можем найти то, что вы ищите. Попробуйте воспользоваться поиском."
+
+#: ../search.php:17
+msgid "Search Results for: %s"
+msgstr "Результаты поиска: %s"
+
+#: ../searchform.php:10 ../searchform.php:12
+msgid "Search"
+msgstr "Поиск"
+
+#: ../searchform.php:11
+msgid "Search &hellip;"
+msgstr "Искать &hellip;"
+
+#: ../inc/template-tags.php:39
+msgid "Post navigation"
+msgstr "Навигация"
+
+#: ../inc/template-tags.php:49
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr "<span class=\"meta-nav\">&larr;</span> Старые записи"
+
+#: ../inc/template-tags.php:53
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Новые записи <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../inc/template-tags.php:75 ../inc/template-tags.php:95
+msgid "(Edit)"
+msgstr "(править)"
+
+#: ../inc/template-tags.php:82
+msgid "%s <span class=\"says\">says:</span>"
+msgstr "%s <span class=\"says\">написал(а):</span>"
+
+#: ../inc/template-tags.php:85
+msgid "Your comment is awaiting moderation."
+msgstr "Ваш комментарий ожидает модерации."
+
+#: ../inc/template-tags.php:93
+msgid "%1$s at %2$s"
+msgstr "%1$s в %2$s"
+
+#: ../inc/template-tags.php:119
+msgid "Posted on <a href=\"%1$s\" title=\"%2$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%3$s\" pubdate>%4$s</time></a><span class=\"byline\"> by <span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title=\"%6$s\" rel=\"author\">%7$s</a></span></span>"
+msgstr "Опубликовано <a href=\"%1$s\" title=\"%2$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%3$s\" pubdate>%4$s</time></a><span class=\"byline\"> автором <span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title=\"%6$s\" rel=\"author\">%7$s</a></span></span>"
+
+#: ../inc/template-tags.php:125
+msgid "View all posts by %s"
+msgstr "Все записи автора %s"
+
+#: ../inc/template-tags.php:191
+msgid "Page %s"
+msgstr "Страница %s"
