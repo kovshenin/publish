@@ -132,7 +132,7 @@ add_action( 'publish_credits', 'publish_footer_credits' );
 function publish_get_footer_credits( $credits = '' ) {
 	return sprintf(
 		'%1$s %2$s',
-		'<a href="http://wordpress.org/" rel="generator">Proudly powered by WordPress</a>',
+		'<a href="' . esc_url( __( 'http://wordpress.org/', 'publish' ) ) . '" rel="generator">' . __( 'Proudly powered by WordPress', 'publish' ) . '</a>',
 		sprintf( __( 'Theme: %1$s by %2$s.', 'publish' ), 'Publish', '<a href="http://kovshenin.com/" rel="designer">Konstantin Kovshenin</a>' )
 	);
 }
