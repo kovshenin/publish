@@ -156,8 +156,8 @@ function publish_post_format_title( $title, $post_id = false ) {
 	if ( ! $post || $post->post_type != 'post' )
 		return $title;
 
-	if ( is_single() && (bool) get_post_format() )
-		$title = sprintf( '<span class="entry-format">%1$s: </span>%2$s', get_post_format_string( get_post_format() ), $title );
+	if ( is_single() && (bool) get_post_format( $post ) )
+		$title = sprintf( '<span class="entry-format">%1$s: </span>%2$s', get_post_format_string( get_post_format( $post ) ), $title );
 
 	return $title;
 }
