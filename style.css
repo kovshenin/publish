@@ -558,6 +558,7 @@ img.size-full {
 .wp-caption {
 	max-width: 100%;
 	border: 1px solid #ccc;
+	margin-bottom: 20px;
 }
 .wp-caption.aligncenter,
 .wp-caption.alignleft,
@@ -571,6 +572,8 @@ img.size-full {
 }
 .wp-caption-text {
 	text-align: center;
+	font-style: italic;
+	font-size: smaller;
 }
 .wp-caption .wp-caption-text {
 	margin: 0.8075em 0;
